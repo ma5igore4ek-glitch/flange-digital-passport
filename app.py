@@ -361,23 +361,57 @@ if run_prediction:
 
     r1, r2, r3 = st.columns(3)
 
-with r1:
-    st.metric(
-        "Вероятность отказа в следующие 500 ч",
-        f"{probability * 100:.1f} %"
-    )
+    with r1:
 
-with r2:
-    st.metric(
-        "Оценка остаточного ресурса",
-        f"{rul:,.0f} ч"
-    )
+        st.markdown(
+            f"""
+            <div class="result">
+                <div class="small-label">
+                    Вероятность отказа в следующие 500 ч
+                </div>
 
-with r3:
-    st.metric(
-        "Текущее состояние",
-        status
-    )
+                <div class="big-number">
+                    {probability * 100:.1f} %
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with r2:
+
+        st.markdown(
+            f"""
+            <div class="result">
+                <div class="small-label">
+                    Оценка остаточного ресурса
+                </div>
+
+                <div class="big-number">
+                    {rul:,.0f} ч
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
+    with r3:
+
+        st.markdown(
+            f"""
+            <div class="result">
+                <div class="small-label">
+                    Текущее состояние
+                </div>
+
+                <div class="{css_status}">
+                    {status}
+                </div>
+            </div>
+            """,
+            unsafe_allow_html=True
+        )
+
     # ========================================================
     # ФАКТОРЫ РИСКА
     # ========================================================
